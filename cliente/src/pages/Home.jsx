@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { jspdf } from 'jspdf';
+import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Button } from "@mui/material";
 import AdfScannerIcon from '@mui/icons-material/AdfScanner';
