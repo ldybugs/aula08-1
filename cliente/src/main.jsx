@@ -11,6 +11,6 @@ createRoot(document.getElementById('root')).render(
             <Route path="/" element={<Home/>}/>
             <Route path="/registro" element={<Registrar />}/>
        </Routes>
-    </BrowserRouter>
-  </StrictMode>,
+    </BrowserRouter>,
+  </StrictMode>
 )
