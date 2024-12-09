@@ -20,6 +20,16 @@ useEffect(() => {
   buscarUsuario();
 }, [])
 
+const removerPessoa = async (id) => {
+  try {
+    await fetch("http://localhost:3000/usuarios/" + id, {
+      method: "DELETE",
+    });
+  } catch {
+    alert("Ops, lascou!!!");
+  }
+};
+
   const exportarPDF = () => {
     const doc = new jsPDF();
 
