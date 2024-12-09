@@ -21,6 +21,8 @@ useEffect(() => {
 }, [])
 
   const exportarPDF = () => {
+    const doc = new jsPDF();
+
     const tabela = usuarios.map( usuario => [
       usuario.id,
       usuario.nome,
