@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import jspdf from 'jspdf';
+import { jspdf } from 'jspdf';
 import 'jspdf-autotable';
-import {Button} from "@mui"
+import { Button } from "@mui/material";
+import AdfScannerIcon from '@mui/icons-material/AdfScanner';
 
 export default function Home() {
   const [usuarios, setUsuarios] = useState([]);
