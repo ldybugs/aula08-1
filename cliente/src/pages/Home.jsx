@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import jspdf from 'jspdf';
 import 'jspdf-autotable';
+import {Button} from "@mui"
 
 import default function Home() {
   const [usuarios, setUsuarios] = useState([]);
-}
 
-
-
-export default function Home() {
+useEffect(() => {
+  const buscarUsuario = async () => {
+    try {
+      const resposta = await fetch("http://localhost:3000/usuarios");
+      const dados = await resposta.json();
+      setUsuarios(dados);
+    } catch {
+      alert('Ocorreu um erro no app!');
+    }
+  }
+  buscarUsuario();
+}, [])
 
   const exportarPDF = () => {
     const tabela = usuarios.map( usuario => [
@@ -35,6 +44,7 @@ export default function Home() {
       <tr>
         <td>Nome</td>
         <td>E-mail</td>
+        <td>Ações</td>
       </tr>
       </thead>
     </table>
