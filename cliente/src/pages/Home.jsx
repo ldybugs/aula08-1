@@ -3,7 +3,7 @@ import jspdf from 'jspdf';
 import 'jspdf-autotable';
 import {Button} from "@mui"
 
-import default function Home() {
+export default function Home() {
   const [usuarios, setUsuarios] = useState([]);
 
 useEffect(() => {
