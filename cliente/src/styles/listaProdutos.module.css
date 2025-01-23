@@ -1,0 +1,47 @@
+.blocoLista{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #7437d6;
+    list-style: none;
+}
+
+.body{
+    background-color: #ede2ff;
+    font-family: Arial, Helvetica, sans-serif;
+}    
+
+.productBorder{
+    border: 6px solid #b395e3;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-right: 25px;
+    background-color: white;
+    width: 300px;
+    border-radius: 20px;
+}
+
+.image{
+    display: flex ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+}
+
+.preco{
+  font-size: 19px;
+  font-weight: bold;
+  border: 8px solid white;
+}
+
+.descricao{
+    font-size: 12px;
+    border: 8px solid white;
+    color: black;
+}
+
+.titulo{
+    font-size: 22px;
+    border: 8px solid white;
+}
