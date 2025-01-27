@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function Alterar() {
 
     const { id } = useParams();
+    const navigation = useNavigate();
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
@@ -11,7 +12,6 @@ export default function Alterar() {
     const [aniversario, setAniversario] = useState('');
     const [estilo, setEstilo] = useState('');
     const [cor, setCor] = useState('');
-    const navigation = useNavigate();
 
     useEffect(() => {
         const busca = async()=>{

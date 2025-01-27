@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import Link from 'react-router-dom';
 import { Button } from "@mui/material";
 import AdfScannerIcon from '@mui/icons-material/AdfScanner';
 
@@ -18,7 +19,7 @@ useEffect(() => {
     }
   }
   buscarUsuario();
-}, [usuarios])
+}, [])
 
   const deletar = async(id) => {
     try{
@@ -45,7 +46,7 @@ useEffect(() => {
     doc.text ("Lista de Usuários", 10, 10);
 
     doc.autoTable({
-      head:[[ "ID", "Nome", "E-mail", "Nome", "Telefone", "Aniversario", "Estilo", "Cor"]],
+      head:[[ "ID", "Nome", "E-mail", "Telefone", "Aniversario", "Estilo", "Cor"]],
       body: tabela
     });
 
@@ -70,6 +71,7 @@ useEffect(() => {
         <td>Cor</td>
       </tr>
       </thead>
+      <tbody>
       {usuarios.map((usuario) =>
         <tr key={usuario.id}>
           <td>{usuario.nome}</td>
@@ -84,6 +86,7 @@ useEffect(() => {
           </Link>
         </tr>
       )}
+      </tbody>
     </table>
     </div>
     </main>

@@ -8,7 +8,7 @@ app.use(cors());
 let usuarios = [];
 
 app.post('/usuarios', (req, res) => {
-    const { nome, email } = req.body;
+    const {nome, email, telefone, aniversario, estilo, cor} = req.body;
     
     if (!nome || !email || !telefone || !aniversario || !estilo || !cor ) {
         return res.status(400).json({ erro: 'As infomações são obrigatórias' });
