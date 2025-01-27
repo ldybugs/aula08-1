@@ -10,11 +10,11 @@ let usuarios = [];
 app.post('/usuarios', (req, res) => {
     const { nome, email } = req.body;
     
-    if (!nome || !email) {
-        return res.status(400).json({ erro: 'Nome e email são obrigatórios' });
+    if (!nome || !email || !telefone || !aniversario || !estilo || !cor ) {
+        return res.status(400).json({ erro: 'As infomações são obrigatórias' });
     }
 
-    const novoUsuario = { id: usuarios.length + 1, nome, email };
+    const novoUsuario = { id: usuarios.length + 1, nome, email, telefone, aniversario, estilo, cor };
     usuarios.push(novoUsuario);
     
     res.status(201).json(novoUsuario);
@@ -37,7 +37,7 @@ app.get('/usuarios/:id', (req, res) => {
 
 app.put('/usuarios/:id', (req, res) => {
     const { id } = req.params;
-    const { nome, email } = req.body;
+    const { nome, email, telefone, aniversario, estilo, cor } = req.body;
     
     const usuario = usuarios.find(u => u.id === parseInt(id));
     
@@ -47,6 +47,10 @@ app.put('/usuarios/:id', (req, res) => {
     
     usuario.nome = nome || usuario.nome;
     usuario.email = email || usuario.email;
+    usuario.telefone = telefone || usuario.telefone;
+    usuario.aniversario = aniversario || usuario.aniversario;
+    usuario.estilo = estilo || usuario.estilo;
+    usuario.cor = cor || usuario.cor;
     
     res.status(200).json(usuario);
 });

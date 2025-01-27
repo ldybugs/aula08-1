@@ -89,7 +89,7 @@ export default function Alterar() {
          placeholder="Cor favorita"
          onChange={(event) => setCor(event.target.value)}/> <br/>
   
-  <button type="submit">Salvar</button>
+  <button type="submit" onClick={alterar}>Salvar</button>
 </form>
 </main>
     );
