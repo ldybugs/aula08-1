@@ -77,7 +77,7 @@ export default function Registrar() {
                placeholder="Cor favorita"
                onChange={(event) => setCor(event.target.value)}/> <br/>
         
-        <button onClick={registrar}>Salvar</button>
+        <button type="submit" onClick={registrar}>Salvar</button>
       </form>
     </main>
   );

@@ -56,8 +56,11 @@ useEffect(() => {
     <main>
     <div>
     <button onClick={()=> exportarPDF()}>Gerar PDF</button>
-    <Link to={'/registro'}><button>Registrar</button></Link>
+    <Link to={'/registro'}>
+      <button>Registrar</button>
+      </Link>
     <table>
+    <thead>
       <tr>
         <td>Nome</td>
         <td>E-mail</td>
@@ -66,6 +69,7 @@ useEffect(() => {
         <td>Estilo</td>
         <td>Cor</td>
       </tr>
+      </thead>
       {usuarios.map((usuario) =>
         <tr key={usuario.id}>
           <td>{usuario.nome}</td>
