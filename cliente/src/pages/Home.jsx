@@ -18,17 +18,17 @@ useEffect(() => {
     }
   }
   buscarUsuario();
-}, [])
+}, [usuarios])
 
-const removerPessoa = async (id) => {
-  try {
-    await fetch("http://localhost:3000/usuarios/" + id, {
-      method: "DELETE",
-    });
-  } catch {
-    alert("Ops, lascou!!!");
+  const deletar = async(id) => {
+    try{
+      await fetch('http://localhost:3000/usuarios/'+ id , {
+        method: 'DELETE'
+      });
+    }catch{
+      alert("Ops... lascou!")
+    }
   }
-};
 
   const exportarPDF = () => {
     const doc = new jsPDF();
@@ -36,31 +36,52 @@ const removerPessoa = async (id) => {
     const tabela = usuarios.map( usuario => [
       usuario.id,
       usuario.nome,
-      usuario.email
+      usuario.email,
+      usuario.telefone,
+      usuario.aniversario,
+      usuario.estilo,
+      usuario.cor
     ]);
-
     doc.text ("Lista de Usuários", 10, 10);
 
     doc.autoTable({
-      head:[[ "ID", "Nome", "E-mail"]],
+      head:[[ "ID", "Nome", "E-mail", "Nome", "Telefone", "Aniversario", "Estilo", "Cor"]],
       body: tabela
     });
 
-    doc.save("alunosIFMS");
+    doc.save("clientesMIUMIU");
   }
 
   return (
+    <main>
     <div>
     <button onClick={()=> exportarPDF()}>Gerar PDF</button>
+    <Link to={'/registro'}><button>Registrar</button></Link>
     <table>
-      <thead>
       <tr>
         <td>Nome</td>
         <td>E-mail</td>
-        <td>Ações</td>
+        <td>Telefone</td>
+        <td>Aniversario</td>
+        <td>Estilo</td>
+        <td>Cor</td>
       </tr>
-      </thead>
+      {usuarios.map((usuario) =>
+        <tr key={usuario.id}>
+          <td>{usuario.nome}</td>
+          <td>{usuario.email}</td>
+          <td>{usuario.telefone}</td>
+          <td>{usuario.aniversario}</td>
+          <td>{usuario.estilo}</td>
+          <td>{usuario.cor}</td>
+          <td> <button onClick={()=> deletar(usuario.id)}>Deletar</button></td>
+          <Link to={'/alterar/' + usuario.id}>
+            <button>Alterar</button>
+          </Link>
+        </tr>
+      )}
     </table>
     </div>
+    </main>
   );
 }

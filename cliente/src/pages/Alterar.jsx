@@ -7,6 +7,10 @@ export default function Alterar() {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [aniversario, setAniversario] = useState('');
+    const [estilo, setEstilo] = useState('');
+    const [cor, setCor] = useState('');
     const navigation = useNavigate();
 
     useEffect(() => {
@@ -15,9 +19,13 @@ export default function Alterar() {
             const dados = await resposta.json();
             setNome(dados.nome);
             setEmail(dados.email);
+            setTelefone(dados.telefone);
+            setAniversario(dados.aniversario);
+            setEstilo(dados.estilo);
+            setCor(dados.cor);
         }
         busca();
-    } ,[]);
+    } ,[id]);
 
     const alterar = async(event) => {
         event.preventDefault();
@@ -28,7 +36,11 @@ export default function Alterar() {
                     headers: { 'Content-Type': 'Application/json'},
                     body: JSON.stringify({
                         nome: nome,
-                        email: email
+                        email: email,
+                        telefone: telefone,
+                        aniversario: aniversario,
+                        estilo: estilo,
+                        cor: cor
                     })
                 }
             );
@@ -38,10 +50,47 @@ export default function Alterar() {
         }
     }
     return (
-        <form onSubmit={alterar}>
-            <input type="text" value={nome} onChange={(evento)=> setNome(evento.target.value)}/>
-            <input type="text" value={email}onChange={(evento)=> setEmail(evento.target.value)}/>
-            <button>Alterar</button>
-        </form>
+     <main>
+       <form onSubmit={alterar}>
+        <input type="text" 
+         id="" 
+         value={nome}  
+         placeholder="Nome"
+         onChange={(event) => setNome(event.target.value)}/> <br/>
+
+  <input type="email" 
+         id="" 
+         value={email}
+         placeholder="E-mail"
+         onChange={(event) => setEmail(event.target.value)}/> <br/>
+
+  <input type="number" 
+         id="" 
+         value={telefone}  
+         placeholder="Telefone"
+         onChange={(event) => setTelefone(event.target.value)}/> <br/>
+ 
+  <input type="date" 
+         id="" 
+         value={aniversario}
+         placeholder="Aniversário" 
+         onChange={(event) => setAniversario(event.target.value)}/> <br/>
+  
+  <input type="text" 
+         id="" 
+         value={estilo}  
+         placeholder="Preferência de estilo"
+         onChange={(event) => setEstilo(event.target.value)}/> <br/>
+  
+  <input type="text" 
+         cor="" 
+         id="" 
+         value={cor} 
+         placeholder="Cor favorita"
+         onChange={(event) => setCor(event.target.value)}/> <br/>
+  
+  <button type="submit">Salvar</button>
+</form>
+</main>
     );
 }
